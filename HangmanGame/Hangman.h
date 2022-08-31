@@ -21,8 +21,8 @@ public:
 	bool hasBeenGuessed(char letter);
 
 	// REQUIRES: letter has not been guessed before
-	// EFFECTS: update numebr of tries. Return true if letter is in the secret word, false otherwise
-	bool makeGuess(char letter);
+	// EFFECTS: add guess to set of all guesses made. Update number of tries if guess failed. If guess failed return false, otherwise return true.
+	bool tryGuess(char letter);
 
 	// EFFECTS: display all currently revealed letters to the player
 	void displayUpdatedWord();
@@ -35,7 +35,6 @@ public:
 
 	// EFFECTS: return true if player ran out of tries before they guessed all the letters
 	bool gameOver();
-
 
 	// getters
 	int getTries() { return tries; }

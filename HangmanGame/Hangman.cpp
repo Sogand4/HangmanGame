@@ -5,13 +5,20 @@ bool Hangman::hasBeenGuessed(char letter) {
 	return allGuesses.find(letter) != allGuesses.end();
 }
 
-bool Hangman::makeGuess(char letter) {
-	tries++;
-	return secretWord.find(letter) != std::string::npos;
+bool Hangman::tryGuess(char letter) {
+	allGuesses.insert(letter);
+
+	if (secretWord.find(letter) == std::string::npos) {
+		tries++;
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 
 void Hangman::displayUpdatedWord() {
-	for (int i = 0; i < secretWord.size(); i++) {
+	for (std::string::size_type i = 0; i < secretWord.length(); i++) {
 		char currentLetter = secretWord.at(i);
 
 		if (allGuesses.find(currentLetter) != allGuesses.end()) {
@@ -21,45 +28,47 @@ void Hangman::displayUpdatedWord() {
 			std::cout << "_";
 		}
 	}
+
+	std::cout << "\n";
 }
 
 void Hangman::displayMan() {
 	switch (tries) {
 	case 0:
-		std::cout << "    |    ";
+		std::cout << "    |    \n";
 		break;
 	case 1:
-		std::cout << "    |    ";
-		std::cout << "    0    ";
+		std::cout << "    |    \n";
+		std::cout << "    0    \n";
 		break;
 	case 2:
-		std::cout << "    |    ";
-		std::cout << "    0    ";
-		std::cout << "    |    ";
+		std::cout << "    |    \n";
+		std::cout << "    0    \n";
+		std::cout << "    |    \n";
 		break;
 	case 3:
-		std::cout << "    |    ";
-		std::cout << "    0    ";
-		std::cout << "    |    ";
-		std::cout << "   /     ";
+		std::cout << "    |    \n";
+		std::cout << "    0    \n";
+		std::cout << "    |    \n";
+		std::cout << "   /     \n";
 		break;
 	case 4:
-		std::cout << "    |    ";
-		std::cout << "    0    ";
-		std::cout << "    |    ";
-		std::cout << "   / \   ";
+		std::cout << "    |    \n";
+		std::cout << "    0    \n";
+		std::cout << "    |    \n";
+		std::cout << "   / \\   \n";
 		break;
 	case 5:
-		std::cout << "    |    ";
-		std::cout << "    0    ";
-		std::cout << "   /|    ";
-		std::cout << "   / \   ";
+		std::cout << "    |    \n";
+		std::cout << "    0    \n";
+		std::cout << "   /|    \n";
+		std::cout << "   / \\   \n";
 		break;
 	case 6:
-		std::cout << "    |    ";
-		std::cout << "    0    ";
-		std::cout << "   /|\   ";
-		std::cout << "   / \   ";
+		std::cout << "    |    \n";
+		std::cout << "    0    \n";
+		std::cout << "   /|\\   \n";
+		std::cout << "   / \\   \n";
 		break;
 	default:
 		break;
@@ -69,7 +78,7 @@ void Hangman::displayMan() {
 bool Hangman::gameWon() {
 	int numLettersGuessed = 0;
 
-	for (int i = 0; i < secretWord.size(); i++) {
+	for (std::string::size_type i = 0; i < secretWord.length(); i++) {
 		char currentLetter = secretWord.at(i);
 
 		if (allGuesses.find(currentLetter) != allGuesses.end()) {
