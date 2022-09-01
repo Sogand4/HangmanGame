@@ -10,6 +10,10 @@ int main()
 	std::cin >> secretWord;
 	Hangman game = Hangman(secretWord);
 
+	system("CLS");
+	std::cout << "Pass the device to player two! \n";
+	game.displayUpdatedWord();
+
 	while (!game.gameOver() && !game.gameWon()) {
 		std::cout << "\nPlayer two guess a letter: ";
 		std::cin >> letter;
@@ -39,7 +43,7 @@ int main()
 		std::cout << "The word was guessed. Player two wins!";
 	}
 	else {
-		std::cout << "The word was not guessed. Player one wins!";
+		std::cout << "The word was " << secretWord << "\nPlayer one wins!";
 	}
 
 	return 0;

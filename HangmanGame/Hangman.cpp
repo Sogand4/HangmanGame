@@ -27,6 +27,8 @@ void Hangman::displayUpdatedWord() {
 		else {
 			std::cout << "_";
 		}
+
+		std::cout << " ";
 	}
 
 	std::cout << "\n";
