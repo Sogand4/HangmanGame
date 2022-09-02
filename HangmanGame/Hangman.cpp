@@ -30,8 +30,6 @@ void Hangman::displayUpdatedWord() {
 
 		std::cout << " ";
 	}
-
-	std::cout << "\n";
 }
 
 void Hangman::displayMan() {

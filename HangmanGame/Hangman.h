@@ -17,23 +17,23 @@ public:
 		secretWord = word;
 	}
 
-	// EFFECTS: checks if letter has been used. If letter has not been guessed, return true, otherwise return false
+	// EFFECTS: if letter has not been guessed, return true, otherwise return false
 	bool hasBeenGuessed(char letter);
 
 	// REQUIRES: letter has not been guessed before
-	// EFFECTS: add guess to set of all guesses made. Update number of tries if guess failed. If guess failed return false, otherwise return true.
+	// EFFECTS: if guess succeeds return true, otherwise update number of tries and return false.
 	bool tryGuess(char letter);
 
-	// EFFECTS: display all currently revealed letters to the player
+	// EFFECTS: display all successfully guessed letters to the player
 	void displayUpdatedWord();
 
 	// EFFECTS: display the state of the man (based on the number of failed tries)
 	void displayMan();
 
-	// EFFECTS: return true if player guessed all the letters 
+	// EFFECTS: return true if player guessed all the letters, otherwise false
 	bool gameWon();
 
-	// EFFECTS: return true if player ran out of tries before they guessed all the letters
+	// EFFECTS: return true if player ran out of tries before they guessed all the letters, otherwise false
 	bool gameOver();
 
 	// getters
