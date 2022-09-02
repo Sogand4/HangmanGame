@@ -1,5 +1,5 @@
 #include <iostream>
-#include <C:\Users\sogan\source\repos\HangmanGame\HangmanGame\Hangman.h>
+#include "../HangmanGame/Hangman.h"
 
 std::string secretWord;
 
